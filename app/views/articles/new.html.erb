@@ -1,5 +1,16 @@
 <h1><center>CREATE AN ARTICLE</center></h1>
 
+<% if @article.errors.any? %>
+  <h2> The following error prevented the article </h2>
+      <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+            <li>
+                <%= msg %>
+            </li>
+        <% end %>
+      </ul>
+<% end %>
+
 <%= form_for @article do |f| %>
 <center>
   <p>
@@ -17,8 +28,5 @@
   <p>
     <%= f.submit %>
   </p>
-
-
 </center>
-
-<% end %>
+  <% end %>
