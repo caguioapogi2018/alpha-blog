@@ -1,6 +1,11 @@
 class ArticlesController < ApplicationController
 
   before_action :set_article, only: [:edit, :update, :show, :destroy]
+  #ang value ng mga edit,update,show at destroy ay ito:
+  #> @article = Article.find(params[:id])
+  # dyan din ung naka based ung id nung article.
+  #
+  #
 
   def index
           @articles = Article.all
@@ -37,8 +42,6 @@ class ArticlesController < ApplicationController
   def edit
 
   end
-
-
 
   private
   def set_article
