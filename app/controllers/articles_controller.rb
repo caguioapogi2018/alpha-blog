@@ -6,16 +6,18 @@ class ArticlesController < ApplicationController
   # dyan din ung naka based ung id nung article.
   #
   #
-
+  ########################################################################
   def index
           @articles = Article.all
   end
+  ########################################################################
   def new
           @article = Article.new
   end
+  ########################################################################
   def create
           @article = Article.new(article_params)
-          @article.user = User.find(9)
+          @article.user = User.find(24) #THIS IS TEMPORARY ID FOR CREATING ARTICLE WITH USER ID
             if @article.save
                flash[:success] = "This article was successfully Created"
                 redirect_to article_path(@article)
@@ -23,11 +25,13 @@ class ArticlesController < ApplicationController
               render 'new'
             end
   end
+  ########################################################################
   def destroy
             @article.destroy
                   flash[:danger] = "This article was successfully Deleted"
                   redirect_to articles_path
   end
+  ########################################################################
   def update
               if @article.update(article_params)
                   flash[:success] = "This article was successfully Updated"
@@ -36,14 +40,14 @@ class ArticlesController < ApplicationController
                   render 'edit'
               end
   end
-
+  ########################################################################
   def show
-
   end
+  ########################################################################
   def edit
-
   end
-
+  ########################################################################
+  # PRIVATE FUNCTIONS
   private
   def set_article
             @article = Article.find(params[:id])
