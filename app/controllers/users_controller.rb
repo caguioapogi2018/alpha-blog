@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
   before_action :params_id, only: [:update, :edit, :show]
+  ########################################################################
+def index
+  @users = User.all
+end
+  # ########################################################################
   def new
     @user = User.new
   end
