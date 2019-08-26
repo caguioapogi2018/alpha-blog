@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
   #
   ########################################################################
   def index
-          @articles = Article.all
+          @articles = Article.paginate(page: params[:page], per_page:5)
   end
   ########################################################################
   def new
@@ -17,7 +17,7 @@ class ArticlesController < ApplicationController
   ########################################################################
   def create
           @article = Article.new(article_params)
-          @article.user = User.find(24) #THIS IS TEMPORARY ID FOR CREATING ARTICLE WITH USER ID
+          @article.user = User.find(9) #THIS IS TEMPORARY ID FOR CREATING ARTICLE WITH USER ID
             if @article.save
                flash[:success] = "This article was successfully Created"
                 redirect_to article_path(@article)
@@ -52,6 +52,7 @@ class ArticlesController < ApplicationController
   def set_article
             @article = Article.find(params[:id])
   end
+  ########################################################################
   def article_params
             params.require(:article).permit(:title, :description)
   end

@@ -1,5 +1,10 @@
 <h1>
   <center> Listing all articles</center>
 </h1>
-
+<div class="center">
+  <%= will_paginate %> <!--#THIS IS FOR PAGINATION-->
+</div>
 <%= render 'article', obj: @articles%>
+<div class="center">
+  <%= will_paginate %>
+</div>
