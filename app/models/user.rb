@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :articles #konektado ito sa user table which is andon ung user id.
+  has_many :articles, dependent: :destroy #konektado ito sa user table which is andon ung user id.
 
   before_save {self.email = email.downcase}
    validates :username, presence: true,
