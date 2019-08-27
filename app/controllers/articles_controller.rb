@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
   def create
 
           @article = Article.new(article_params)
-          @article.user = User.find(user_article_id.id) #THIS IS TEMPORARY ID FOR CREATING ARTICLE WITH USER ID
+          @article.user = current_user #THIS IS TEMPORARY ID FOR CREATING ARTICLE WITH USER ID
             if @article.save
                flash[:success] = "This article was successfully Created"
                 redirect_to article_path(@article)
@@ -60,10 +60,6 @@ class ArticlesController < ApplicationController
   ########################################################################
   def article_params
             params.require(:article).permit(:title, :description)
-  end
-
-  def user_article_id
-        @article_user_id = current_user
   end
 
   def require_same_user
